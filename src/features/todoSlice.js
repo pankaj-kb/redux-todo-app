@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  todos: [],
+  todos: [
+    { id: 1222, text: "Learn FSJS" },
+    { id: 1223, text: "Complete projects" },
+  ],
 };
 
 export const todoSlice = createSlice({
@@ -17,7 +20,7 @@ export const todoSlice = createSlice({
       state.todos.push(todo);
     },
     removeTodo: (state, action) => {
-      state.todos.filter((todo) => todo.id !== action.payload);
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
   },
 });
