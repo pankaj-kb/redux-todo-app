@@ -2,10 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  todos: [
-    { id: 1222, text: "Learn FSJS" },
-    { id: 1223, text: "Complete projects" },
-  ],
+  todos: [],
 };
 
 export const todoSlice = createSlice({
