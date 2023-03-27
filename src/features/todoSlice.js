@@ -1,37 +1,47 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { nanoid } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
   todos: [
-    { id: nanoid(), text: 'Learn JS with Hitesh Sir' },
-    { id: nanoid(), text: 'Done with redux' },
-  ],
+    { id: nanoid(), title: "Make this app responsive", completed: true },
+    {
+      id: nanoid(),
+      title: "Add local storage to this app",
+      completed: false,
+    },
+  ], //Storing todos as in array
 };
 
 export const todoSlice = createSlice({
-  name: 'todo',
+  name: "todo",
   initialState,
   reducers: {
     addTodo: (state, action) => {
       const todo = {
         id: nanoid(),
-        text: action.payload,
+        title: action.payload,
+        completed: false,
       };
-
       state.todos.push(todo);
     },
     removeTodo: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
-    editTodo: (state, action) => {
-      const todo = state.todos.find((todo) => todo.id === action.payload.id);
+    completeTodo: (state, action) => {
+      const todo = state.todos.find((todo) => todo.id === action.payload);
       if (todo) {
-        todo.text = action.payload.text;
+        todo.completed = true;
       }
     },
+    unMark: (state, action) => {
+      const todo = state.todos.find((todo) => todo.id === action.payload);
+      if (todo) {
+        todo.completed = false;
+      }
+    },
+    editTodo: (state, action) => {},
   },
 });
 
-export const { addTodo, removeTodo, editTodo } = todoSlice.actions;
+export const { addTodo, removeTodo, completeTodo, unMark, editTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;
