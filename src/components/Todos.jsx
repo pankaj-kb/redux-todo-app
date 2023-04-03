@@ -69,10 +69,11 @@ function Todos() {
   // Actual Render
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-[#5B6270] text-[#0A120B]">
+    <div className="bg-[#394a6d] h-screen flex flex-col justify-center 
+    items-center text-[#0A120B]">
       {/* Todo Lines area */}
       <div
-        className="bg-[#313642] flex flex-col gap-[18px] absolute top-[10%] border-none h-[590px] w-[400px] pt-[2%] pb-[20px] max-h-[590px] scrollbar-none overflow-y-scroll rounded-[20px]"
+        className="bg-[#313642] flex flex-col gap-[18px] absolute top-[10%] border-none h-[590px] w-[400px] pt-[2%] pb-[20px] max-h-[590px] scrollbar-none overflow-y-scroll rounded-[20px] backdrop-blur-xl bg-opacity-50"
       >
         {todos.map((todo) => (
           <div
@@ -168,7 +169,7 @@ function Todos() {
       </div>
 
       {/* Task input */}
-      <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[12%] bg-[#313642] h-[100px] pt-[50px] pl-[10px] pr-[10px] rounded-[20px]">
+      <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[12%] bg-[#313642] h-[100px] pt-[50px] pl-[10px] pr-[10px] rounded-[20px] backdrop-blur-xl bg-opacity-60">
         <Tooltip title="Enter task here" position="bottom" trigger="mouseenter">
           <input
             className="outline-none text-[#0A120B] text-[18px] text-center items-center font-[600] rounded-[15px] h-[50px] w-[300px] bg-[#ffffff] border-none"
