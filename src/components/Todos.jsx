@@ -21,6 +21,7 @@ import {
   MdModeEditOutline,
   MdCheck,
   MdRemoveDone,
+  MdOutlineCancel,
 } from "react-icons/md";
 import { nanoid } from "@reduxjs/toolkit";
 
@@ -68,11 +69,10 @@ function Todos() {
   // Actual Render
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-[#01011F] text-[#0A120B] gap-[30px]">
+    <div className="h-screen flex flex-col justify-center items-center bg-[#5B6270] text-[#0A120B]">
       {/* Todo Lines area */}
       <div
-        className="flex flex-col gap-[18px] absolute top-[10%] border-[3px]
-       border-[#5E8BFF] h-[590px] w-[400px] pt-[5%] pb-[10px] max-h-[590px] scrollbar-none  overflow-y-scroll"
+        className="bg-[#313642] flex flex-col gap-[18px] absolute top-[10%] border-none h-[590px] w-[400px] pt-[2%] pb-[20px] max-h-[590px] scrollbar-none overflow-y-scroll rounded-[20px]"
       >
         {todos.map((todo) => (
           <div
@@ -83,11 +83,10 @@ function Todos() {
               <>
                 {/* Todo Title */}
                 <h1
-                  className={`${
-                    todo.completed
-                      ? "bg-[#A8D672] line-through"
-                      : "bg-[#F7D44C]"
-                  } text-[#0A120B] text-[18px] rounded-[10px] h-[70%] w-[250px] font-extrabold p-[1%] text-center focus:outline-none`}
+                  className={`${todo.completed
+                    ? "bg-[#63B4FF] line-through"
+                    : "bg-[#F8AA4C]"
+                    } text-[#0A120B] text-[18px] rounded-[10px] h-[80%] w-[250px] font-extrabold p-[1%] text-center focus:outline-none`}
                 >
                   {todo.title}
                 </h1>
@@ -111,9 +110,9 @@ function Todos() {
                       }}
                     >
                       {todo.completed ? (
-                        <MdRemoveDone className="bg-[#F7D44C] text-[#ffffff] w-[22px] h-[25px] rounded-[100%] p-[2px]" />
+                        <MdRemoveDone className="bg-[#F7D44C] text-[#ffffff] w-[25px] h-[25px] rounded-[100%] p-[2px]" />
                       ) : (
-                        <MdCheck className="bg-[#A8D672] text-[#ffffff] w-[22px] h-[25px] rounded-[100%] p-[2px]" />
+                        <MdCheck className="bg-[#A8D672] text-[#ffffff] w-[25px] h-[25px] rounded-[100%] p-[2px]" />
                       )}
                     </button>
                   </Tooltip>
@@ -146,19 +145,22 @@ function Todos() {
                 </div>
               </>
             ) : (
-              <form onSubmit={(event) => handleEditTodo(event, todo.id)}>
+              <form onSubmit={(event) => handleEditTodo(event, todo.id)} 
+              className="flex flex-col gap-[12px] h-[100%] w-[250px]">
                 <input
-                  className="bg-[#F7D44C] text-[#0A120B] text-[18px] rounded-[10px] h-[70%] w-[250px] font-extrabold p-[1%] text-center focus:outline-none"
+                  className="bg-[#FF7360] text-[#0A120B] text-[18px] rounded-[10px] h-[70px] w-[100%] font-extrabold p-[1%] focus:outline-none"
                   type="text"
                   name="editedTask"
                   defaultValue={todo.title}
                 />
-                <button type="submit">
-                  <FaPlus className="text-[#ffffff] bg-[#5E8BFF] w-[25px] h-[25px] rounded-[100%] p-[2px]" />
-                </button>
-                <button className="bg-[white]" onClick={handleCancelClick}>
-                  Cancel
-                </button>
+                <div className="flex flex-row justify-center items-center gap-[12px] ml-[90%]">
+                  <button type="submit">
+                    <FaPlus className="text-[#ffffff] bg-[#5E8BFF] w-[23px] h-[23px] rounded-[100%] p-[2px]" />
+                  </button>
+                  <button onClick={handleCancelClick}>
+                  <MdOutlineCancel className="text-[#ffffff] bg-[#EA7A53] w-[25px] h-[25px] rounded-[100%] p-[2px]" />
+                  </button>
+                </div>
               </form>
             )}
           </div>
@@ -166,7 +168,7 @@ function Todos() {
       </div>
 
       {/* Task input */}
-      <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[10%]">
+      <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[12%] bg-[#313642] h-[100px] pt-[50px] pl-[10px] pr-[10px] rounded-[20px]">
         <Tooltip title="Enter task here" position="bottom" trigger="mouseenter">
           <input
             className="outline-none text-[#0A120B] text-[18px] text-center items-center font-[600] rounded-[15px] h-[50px] w-[300px] bg-[#ffffff] border-none"
