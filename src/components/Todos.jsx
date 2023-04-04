@@ -66,15 +66,20 @@ function Todos() {
     setEditID(0);
   };
 
+  const handleProfileLink = (event) => {
+    window.open("https://www.linkedin.com/in/pankajkb/","_blank", "noopener,noreferrer");
+  }
+
   // Actual Render
 
   return (
-    <div className="bg-[#394a6d] h-screen flex flex-col justify-center 
-    items-center text-[#0A120B]">
+    <div
+      className="bg-[#0D1449] h-screen flex flex-col justify-center 
+    items-center text-[#0A120B]"
+    >
       {/* Todo Lines area */}
-      <div
-        className="bg-[#313642] flex flex-col gap-[18px] absolute top-[10%] border-none h-[590px] w-[400px] pt-[2%] pb-[20px] max-h-[590px] scrollbar-none overflow-y-scroll rounded-[20px] backdrop-blur-xl bg-opacity-50"
-      >
+      <div className="bg-[#0C9FFF] bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-5 border border-gray-100 flex flex-col gap-[18px] absolute top-[10%] border-none h-[590px] w-[400px] pt-[2%] pb-[20px] max-h-[590px] scrollbar-none overflow-y-scroll rounded-[20px]">
+        {/* <div className="h-full w-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-100"> */}
         {todos.map((todo) => (
           <div
             key={todo.id}
@@ -84,10 +89,11 @@ function Todos() {
               <>
                 {/* Todo Title */}
                 <h1
-                  className={`${todo.completed
-                    ? "bg-[#63B4FF] line-through"
-                    : "bg-[#F8AA4C]"
-                    } text-[#0A120B] text-[18px] rounded-[10px] h-[80%] w-[250px] font-extrabold p-[1%] text-center focus:outline-none`}
+                  className={`${
+                    todo.completed
+                      ? "bg-[#88FFD4] line-through"
+                      : "bg-[#FF4891]"
+                  } text-[#0A120B] text-[18px] rounded-[10px] h-[80%] w-[250px] font-extrabold p-[1%] text-center focus:outline-none`}
                 >
                   {todo.title}
                 </h1>
@@ -111,9 +117,9 @@ function Todos() {
                       }}
                     >
                       {todo.completed ? (
-                        <MdRemoveDone className="bg-[#F7D44C] text-[#ffffff] w-[25px] h-[25px] rounded-[100%] p-[2px]" />
+                        <MdRemoveDone className="text-[#ffffff] w-[25px] h-[25px] rounded-[100%]" />
                       ) : (
-                        <MdCheck className="bg-[#A8D672] text-[#ffffff] w-[25px] h-[25px] rounded-[100%] p-[2px]" />
+                        <MdCheck className="text-[#ffffff] w-[25px] h-[25px] rounded-[100%]" />
                       )}
                     </button>
                   </Tooltip>
@@ -127,8 +133,8 @@ function Todos() {
                   >
                     <button onClick={() => setEditID(todo.id)}>
                       <MdModeEditOutline
-                        className="text-[#ffffff] bg-[#99B7DD] w-[25px] 
-                  h-[25px] rounded-[100%] p-[2px]"
+                        className="text-[#ffffff] w-[25px] 
+                  h-[25px] rounded-[100%]"
                       />
                     </button>
                   </Tooltip>
@@ -140,26 +146,28 @@ function Todos() {
                     trigger="mouseenter"
                   >
                     <button onClick={() => dispatch(removeTodo(todo.id))}>
-                      <MdDelete className="text-[#ffffff] bg-[#EA7A53] w-[25px] h-[25px] rounded-[100%] p-[2px]" />
+                      <MdDelete className="text-[#ffffff] w-[25px] h-[25px] rounded-[100%]" />
                     </button>
                   </Tooltip>
                 </div>
               </>
             ) : (
-              <form onSubmit={(event) => handleEditTodo(event, todo.id)} 
-              className="flex flex-col gap-[12px] h-[100%] w-[250px]">
+              <form
+                onSubmit={(event) => handleEditTodo(event, todo.id)}
+                className="flex flex-col gap-[12px] h-[100%] w-[250px]"
+              >
                 <input
-                  className="bg-[#FF7360] text-[#0A120B] text-[18px] rounded-[10px] h-[70px] w-[100%] font-extrabold p-[1%] focus:outline-none"
+                  className="bg-[#0C9FFF] text-[#0A120B] text-[18px] rounded-[10px] h-[70px] w-[100%] font-extrabold p-[1%] focus:outline-none"
                   type="text"
                   name="editedTask"
                   defaultValue={todo.title}
                 />
                 <div className="flex flex-row justify-center items-center gap-[12px] ml-[90%]">
                   <button type="submit">
-                    <FaPlus className="text-[#ffffff] bg-[#5E8BFF] w-[23px] h-[23px] rounded-[100%] p-[2px]" />
+                    <FaPlus className="text-[#ffffff] w-[23px] h-[23px] rounded-[100%]" />
                   </button>
                   <button onClick={handleCancelClick}>
-                  <MdOutlineCancel className="text-[#ffffff] bg-[#EA7A53] w-[25px] h-[25px] rounded-[100%] p-[2px]" />
+                    <MdOutlineCancel className="text-[#ffffff] w-[25px] h-[25px] rounded-[100%]" />
                   </button>
                 </div>
               </form>
@@ -169,10 +177,10 @@ function Todos() {
       </div>
 
       {/* Task input */}
-      <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[12%] bg-[#313642] h-[100px] pt-[50px] pl-[10px] pr-[10px] rounded-[20px] backdrop-blur-xl bg-opacity-60">
+      <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[12%] h-[100px] pt-[50px] pl-[10px] pr-[10px] rounded-[20px] bg-[#0C9FFF] bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border-none">
         <Tooltip title="Enter task here" position="bottom" trigger="mouseenter">
           <input
-            className="outline-none text-[#0A120B] text-[18px] text-center items-center font-[600] rounded-[15px] h-[50px] w-[300px] bg-[#ffffff] border-none"
+            className="outline-none text-[#0A120B] text-[18px] text-center items-center font-[600] rounded-[15px] h-[50px] w-[300px] bg-[#007BEE] border-none placeholder:text-[#1f1f1f]"
             type="text"
             placeholder="Enter Task"
             value={inputTask}
@@ -182,11 +190,12 @@ function Todos() {
 
         {/* Add task button */}
         <Tooltip title="Add task" position="bottom" trigger="mouseenter">
-          <button onClick={handleAddTodo}>
-            <FaPlus className="text-[#ffffff] h-[100%] w-[200%] rounded-[100%] bg-[#5E8BFF] p-[5px]" />
+          <button onClick={handleAddTodo} className="focus:outline-none">
+            <FaPlus className="text-[#ffffff] h-[100%] w-[200%] rounded-[100%] border-[#ffffff] p-[2px] border-[2px]" />
           </button>
         </Tooltip>
       </div>
+      <h1 onClick={handleProfileLink} className="text-[#ffffff] text-[18px] absolute bottom-[2%] hover:cursor-pointer">Made with ❤️ by Pankaj</h1>
     </div>
   );
 }
