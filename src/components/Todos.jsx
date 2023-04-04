@@ -141,7 +141,7 @@ function Todos() {
 
                   {/* Task remove button */}
                   <Tooltip
-                    title="Remove task from list"
+                    title="Delete Task"
                     position="bottom"
                     trigger="mouseenter"
                   >
@@ -195,7 +195,13 @@ function Todos() {
           </button>
         </Tooltip>
       </div>
+      <Tooltip
+                    title="view developer profile"
+                    position="bottom"
+                    trigger="mouseenter"
+                  >
       <h1 onClick={handleProfileLink} className="text-[#ffffff] text-[18px] absolute bottom-[2%] hover:cursor-pointer">Made with ❤️ by Pankaj</h1>
+    </Tooltip>
     </div>
   );
 }
