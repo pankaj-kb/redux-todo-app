@@ -156,10 +156,13 @@ function Todos() {
                 onSubmit={(event) => handleEditTodo(event, todo.id)}
                 className="flex flex-col gap-[12px] h-[100%] w-[250px]"
               >
-                <input
-                  className="bg-[#0C9FFF] text-[#0A120B] text-[18px] rounded-[10px] h-[70px] w-[100%] font-extrabold p-[1%] focus:outline-none"
+                <textarea
+                  className="bg-[#0C9FFF] text-[#0A120B] text-[18px] resize-none overflow-hidden rounded-[10px] h-[px] w-[100%] font-extrabold p-[1%] focus:outline-none"
                   type="text"
                   name="editedTask"
+                  wrap= "soft"
+                  rows={Math.ceil(todo.title.length / 22)}
+                  cols="5"
                   defaultValue={todo.title}
                 />
                 <div className="flex flex-row justify-center items-center gap-[12px] ml-[90%]">
