@@ -31,11 +31,11 @@ function Todos() {
   const dispatch = useDispatch();
   const [inputTask, setInputTask] = useState("");
   const [editID, setEditID] = useState("");
-  const [newTitle, setNewTitle] = useState("");
+  // const [newTitle, setNewTitle] = useState("");
 
   const handleInputTask = (event) => {
     setInputTask(event.target.value);
-    setNewTitle("");
+    // setNewTitle("");
   };
 
   const handleAddTodo = () => {
@@ -57,7 +57,7 @@ function Todos() {
     const newTitle = event.target.elements.editedTask.value.trim();
     if (newTitle !== "") {
       dispatch(editTodo({ id: id, title: newTitle }));
-      setNewTitle("");
+      // setNewTitle("");
       setEditID(0);
     }
   };
