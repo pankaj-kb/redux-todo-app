@@ -1,20 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  todos: [
-    { id: nanoid(), title: "Make this app responsive", completed: true },
-    {
-      id: nanoid(),
-      title: "Add local storage to this app",
-      completed: false,
-    },
-    {
-      id: nanoid(),
-      title:
-        "This is an very long task to check the responsiveness of this app",
-      completed: false,
-    },
-  ], //Storing todos as in array
+  todos: JSON.parse(localStorage.getItem("todos")) || [], // Load initial state from localStorage if available
 };
 
 export const todoSlice = createSlice({
@@ -28,27 +15,32 @@ export const todoSlice = createSlice({
         completed: false,
       };
       state.todos.push(todo);
+      localStorage.setItem("todos", JSON.stringify(state.todos)); // Save state to localStorage
     },
     removeTodo: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      localStorage.setItem("todos", JSON.stringify(state.todos)); // Save state to localStorage
     },
     completeTodo: (state, action) => {
       const todo = state.todos.find((todo) => todo.id === action.payload);
       if (todo) {
         todo.completed = true;
+        localStorage.setItem("todos", JSON.stringify(state.todos)); // Save state to localStorage
       }
     },
     unMark: (state, action) => {
       const todo = state.todos.find((todo) => todo.id === action.payload);
       if (todo) {
         todo.completed = false;
+        localStorage.setItem("todos", JSON.stringify(state.todos)); // Save state to localStorage
       }
     },
     editTodo: (state, action) => {
-      const {id, title} = action.payload;
+      const { id, title } = action.payload;
       const todo = state.todos.find((todo) => todo.id === id);
       if (todo) {
         todo.title = title;
+        localStorage.setItem("todos", JSON.stringify(state.todos)); // Save state to localStorage
       }
     },
   },

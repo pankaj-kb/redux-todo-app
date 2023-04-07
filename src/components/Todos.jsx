@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
@@ -27,11 +27,13 @@ import { nanoid } from "@reduxjs/toolkit";
 
 // Actual App
 function Todos() {
-  const todos = useSelector((state) => state.todos.todos);
   const dispatch = useDispatch();
+
+  const todos = useSelector((state) => state.todos.todos);
+
   const [inputTask, setInputTask] = useState("");
+
   const [editID, setEditID] = useState("");
-  // const [newTitle, setNewTitle] = useState("");
 
   const handleInputTask = (event) => {
     setInputTask(event.target.value);
@@ -67,8 +69,12 @@ function Todos() {
   };
 
   const handleProfileLink = (event) => {
-    window.open("https://www.linkedin.com/in/pankajkb/","_blank", "noopener,noreferrer");
-  }
+    window.open(
+      "https://www.linkedin.com/in/pankajkb/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
 
   // Actual Render
 
@@ -160,7 +166,7 @@ function Todos() {
                   className="bg-[#0C9FFF] text-[#0A120B] text-[18px] resize-none overflow-hidden rounded-[10px] h-[px] w-[100%] font-extrabold p-[1%] focus:outline-none"
                   type="text"
                   name="editedTask"
-                  wrap= "soft"
+                  wrap="soft"
                   rows={Math.ceil(todo.title.length / 22)}
                   cols="5"
                   defaultValue={todo.title}
@@ -198,8 +204,11 @@ function Todos() {
           </button>
         </Tooltip>
       </div>
-      <h1 onClick={handleProfileLink} className="text-[#ffffff] text-[18px] absolute bottom-[2%] hover:cursor-pointer">
-      Made with ❤️ by Pankaj
+      <h1
+        onClick={handleProfileLink}
+        className="text-[#ffffff] text-[18px] absolute bottom-[2%] hover:cursor-pointer"
+      >
+        Made with ❤️ by Pankaj
       </h1>
     </div>
   );
