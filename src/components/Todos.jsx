@@ -81,9 +81,9 @@ function Todos() {
   return (
     <div
       className="h-screen flex flex-col justify-center 
-    items-center text-[#0A120B]">
+    items-center text-[#ffffff]">
       {/* Todo Lines area */}
-      <div className="bg-[#0C9FFF] bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border border-gray-100 flex flex-col gap-[18px] absolute top-[10%] border-none h-[590px] w-[400px] pt-[2%] pb-[20px] max-h-[590px] scrollbar-none overflow-y-scroll rounded-[20px]">
+      <div className="bg-[#202123] bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border border-gray-100 flex flex-col gap-[18px] absolute top-[10%] border-none h-[590px] w-[400px] pt-[2%] pb-[20px] max-h-[590px] scrollbar-none overflow-y-scroll rounded-[20px]">
         {/* <div className="h-full w-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-100"> */}
         {todos.map((todo) => (
           <div
@@ -98,7 +98,7 @@ function Todos() {
                     todo.completed
                       ? "bg-[#88FFD4] line-through"
                       : "bg-[#FF4891]"
-                  } text-[#0A120B] text-[18px] rounded-[10px] h-[80%] w-[250px] font-extrabold p-[1%] text-center focus:outline-none`}
+                  } text-[18px] rounded-[10px] h-[80%] w-[250px] font-extrabold p-[1%] text-center focus:outline-none`}
                 >
                   {todo.title}
                 </h1>
@@ -162,7 +162,7 @@ function Todos() {
                 className="flex flex-col gap-[12px] h-[100%] w-[250px]"
               >
                 <textarea
-                  className="bg-[#0C9FFF] text-[#0A120B] text-[18px] resize-none overflow-hidden rounded-[10px] h-[px] w-[100%] font-extrabold p-[1%] focus:outline-none"
+                  className="bg-[#0C9FFF] text-[18px] resize-none overflow-hidden rounded-[10px] h-[px] w-[100%] font-extrabold p-[1%] focus:outline-none"
                   type="text"
                   name="editedTask"
                   wrap="soft"
@@ -185,10 +185,10 @@ function Todos() {
       </div>
 
       {/* Task input */}
-      <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[12%] h-[100px] pt-[50px] pl-[10px] pr-[10px] rounded-[20px] bg-[#0C9FFF] bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border-none">
+      <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[12%] h-[100px] pt-[50px] pl-[10px] pr-[10px] rounded-[20px] bg-[#202123] bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border-none">
         <Tooltip title="Enter task here" position="bottom" trigger="mouseenter">
           <input
-            className="outline-none text-[#0A120B] text-[18px] text-center items-center font-[600] rounded-[15px] h-[50px] w-[300px] bg-[#007BEE] border-none placeholder:text-[#1f1f1f]"
+            className="outline-none text-[#0A120B] text-[18px] text-center items-center font-[600] rounded-[15px] h-[50px] w-[300px] bg-[#007BEE] border-none placeholder:text-[#ffffff]"
             type="text"
             placeholder="Enter Task"
             value={inputTask}
