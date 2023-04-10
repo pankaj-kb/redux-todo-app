@@ -188,7 +188,7 @@ function Todos() {
       <div className="flex flex-col gap-[20px] justify-center items-center absolute bottom-[12%] h-[100px] pt-[50px] pl-[10px] pr-[10px] rounded-[20px] bg-[#202123] bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border-none">
         <Tooltip title="Enter task here" position="bottom" trigger="mouseenter">
           <input
-            className="outline-none text-[#0A120B] text-[18px] text-center items-center font-[600] rounded-[15px] h-[50px] w-[300px] bg-[#007BEE] border-none placeholder:text-[#ffffff]"
+            className="outline-none text-[] text-[18px] text-center items-center font-[600] rounded-[15px] h-[50px] w-[300px] bg-[#007BEE] border-none placeholder:text-[#ffffff]"
             type="text"
             placeholder="Enter Task"
             value={inputTask}
